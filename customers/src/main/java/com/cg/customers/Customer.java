@@ -7,24 +7,16 @@ package com.cg.customers;
  *Maintaining customer details of money money bank
  */
 public class Customer {
-	private final int customerId;
+	private int customerId;
 	private String customerName;
 	private long contactNumber;
 	private String emailId;
 	private String dateOfBirth;
 
 	
-	private static int custId;
-	
-	static {
-		custId = 200;
-	}
-	
-	{
-		this.customerId = ++custId;
-	}
-	
-	public Customer(String customerName, long contactNumber, String dateOfBirth, String email) {
+		
+	public Customer(int customerId, String customerName, long contactNumber, String dateOfBirth, String email) {
+		this.customerId = customerId;
 		this.customerName = customerName;
 		this.contactNumber = contactNumber;
 		this.dateOfBirth = dateOfBirth;
@@ -66,11 +58,18 @@ public class Customer {
 	public int getCustomerId() {
 		return customerId;
 	}
+	
 
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
+	}
 
 	@Override
 	public String toString() {
 		return "Customer [customerId=" + customerId + ", customerName=" + customerName + ", contactNumber="
 				+ contactNumber + ", emailId=" + emailId + ", dateOfBirth=" + dateOfBirth + "]";
 	}
+
+
+	
 }
