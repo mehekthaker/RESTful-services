@@ -1,6 +1,9 @@
 package com.cg.customers.dao;
 
-import java.util.ArrayList;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
@@ -9,34 +12,34 @@ import com.cg.customers.Customer;
 @Component
 public class DaoImpl implements Dao {
 
-	private ArrayList<Customer> customerList = new ArrayList<Customer>();
+	private Map<Integer, Customer> customerMap = new HashMap<Integer, Customer>();
 
 	public void addCustomer(Customer customer) {
-		customerList.add(customer);
+		System.out.println(customer);
+		customerMap.put(customer.getCustomerId(), customer);
 
 	}
 
-	public ArrayList<Customer> viewAllCustomers() {
-		return customerList;
+	public Collection<Customer> viewAllCustomers() {
+		return customerMap.values();
 	}
 
-	public void deleteCustomer(Customer customer) {
-		for (Customer cust : customerList) {
-			if (cust.getCustomerId() == customer.getCustomerId())
-				customerList.remove(customer);
+	public void deleteCustomer(int customerId) {
+		for (Customer cust : customerMap.values()) {
+			if (cust.getCustomerId() == customerId)
+				customerMap.remove(cust.getCustomerId());
 		}
 
 	}
 
 	public void updateCustomer(Customer customer) {
-		for (Customer cus : customerList)
+		for (Customer cus : customerMap.values())
 		{
 			
 			if (cus.getCustomerId() == customer.getCustomerId())
 			{
-				customerList.remove(cus);
-				customerList.add(customer);
-				break;
+				customerMap.put(customer.getCustomerId(), customer);
+			
 			}
 			
 		}

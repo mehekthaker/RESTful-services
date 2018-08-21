@@ -1,6 +1,7 @@
 package com.cg.customers.service;
 
-import java.util.ArrayList;
+
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,7 +20,7 @@ public class ServiceImpl implements Service{
 		
 	}
 
-	public ArrayList<Customer> viewAllCustomers() {
+	public Collection<Customer> viewAllCustomers() {
 		return dao.viewAllCustomers();
 	}
 
@@ -29,8 +30,8 @@ public class ServiceImpl implements Service{
 		return;
 	}
 
-	public void deleteCustomer(Customer customer ) {
-		dao.deleteCustomer(customer);
+	public void deleteCustomer(int customerId) {
+		dao.deleteCustomer(customerId);
 		
 	}
 
